@@ -1,17 +1,18 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = (env) => {
+  const prod = !!env.production;
   const buildPath = `${__dirname}/docs`;
 
   const htmlPlugin = new HtmlWebpackPlugin({
-    minify: true,
+    minify: prod,
     inject: true,
-    base: '/terrance-jevon/',
+    base: prod ? '/terrance-jevon/' : '/',
     template: 'index.html'
   });
 
   return {
-    mode: 'production',
+    mode: prod ? 'production' : 'development',
     entry: './src/index.tsx',
     output: {
       path: buildPath

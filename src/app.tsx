@@ -3,6 +3,9 @@ import { ReactElement } from 'react';
 import './app.scss';
 
 export function App(): ReactElement {
-  return <p>Hello react pages!</p>;
+  return (
+    <div className="page-block">
+      <p>Happy pages</p>
+    </div>
+  );
 }
-
