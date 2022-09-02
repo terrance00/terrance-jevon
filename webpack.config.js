@@ -6,7 +6,7 @@ module.exports = (env) => {
   const htmlPlugin = new HtmlWebpackPlugin({
     minify: true,
     inject: true,
-    base: '/',
+    base: '/terrance-jevon/',
     template: 'index.html'
   });
 
