@@ -1,5 +1,14 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 module.exports = (env) => {
   const buildPath = `${__dirname}/docs`;
+
+  const htmlPlugin = new HtmlWebpackPlugin({
+    minify: true,
+    inject: true,
+    base: '/',
+    template: 'index.html'
+  });
 
   return {
     mode: 'production',
@@ -22,6 +31,7 @@ module.exports = (env) => {
           use: ['style-loader', 'css-loader', 'sass-loader']
         }
       ]
-    }
+    },
+    plugins: [htmlPlugin]
   };
 };
