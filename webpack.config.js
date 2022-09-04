@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = (env) => {
   const prod = !!env.production;
@@ -10,6 +11,10 @@ module.exports = (env) => {
     base: prod ? '/terrance-jevon/' : '/',
     template: 'index.html'
   });
+
+  /*const copy = new CopyPlugin({
+    patterns: [{ from: './node_modules/paper/dist/paper-full.min.js', to: '.' }]
+  });*/
 
   return {
     mode: prod ? 'production' : 'development',
@@ -33,6 +38,7 @@ module.exports = (env) => {
         }
       ]
     },
-    plugins: [htmlPlugin]
+    plugins: [htmlPlugin /*, copy*/],
+    devtool: !!prod ? 'inline-source-maps' : undefined
   };
 };
