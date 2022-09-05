@@ -1,5 +1,4 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = (env) => {
   const prod = !!env.production;
@@ -12,9 +11,11 @@ module.exports = (env) => {
     template: 'index.html'
   });
 
-  /*const copy = new CopyPlugin({
-    patterns: [{ from: './node_modules/paper/dist/paper-full.min.js', to: '.' }]
-  });*/
+  const devTool = !prod
+    ? {
+        devtool: 'inline-source-map'
+      }
+    : {};
 
   return {
     mode: prod ? 'production' : 'development',
@@ -38,7 +39,7 @@ module.exports = (env) => {
         }
       ]
     },
-    plugins: [htmlPlugin /*, copy*/],
-    devtool: !!prod ? 'inline-source-maps' : undefined
+    plugins: [htmlPlugin],
+    ...devTool
   };
 };
