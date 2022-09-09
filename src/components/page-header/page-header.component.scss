@@ -1,11 +1,13 @@
 @import '../../styles/box-shadow.scss';
 
 .page-header {
-  img {
+  img.profile-pic {
     width: 300px;
     height: auto;
     border-radius: 100px;
     transition: box-shadow 1s;
+    margin-left:auto;
+    margin-right:auto;
   }
   z-index: 1;
 
@@ -13,8 +15,8 @@
     text-align: center;
   }
 
-  margin-left:auto;
-  margin-right:auto;
+  margin-left: auto;
+  margin-right: auto;
   display: flex;
   flex-direction: column;
   padding: 40px;
@@ -30,12 +32,16 @@
   }
 
   transition: box-shadow 1s;
+
+  .thin {
+    font-weight:100;
+  }
 }
 
 .page-header:hover {
   box-shadow: $box-shadow;
 
-  img {
+  img.profile-pic {
     box-shadow: $box-shadow;
   }
 }

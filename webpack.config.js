@@ -19,8 +19,8 @@ module.exports = (env) => {
         to: 'assets/'
       },
       {
-        from: 'src/assets/icons/*',
-        to: __dirname + '/docs/assets/icons/[name][ext]'
+        from: 'node_modules/@fortawesome/fontawesome-free/js/all.min.js',
+        to: __dirname + '/docs/js/[name][ext]'
       }
     ]
   });

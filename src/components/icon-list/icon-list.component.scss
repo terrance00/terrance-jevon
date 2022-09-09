@@ -1,0 +1,18 @@
+@import '../../styles/box-shadow.scss';
+
+.icon-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  a.icon-link {
+    margin: 0 10px 0 10px;
+    transition: box-shadow 1s;
+    text-decoration: none;
+    color: black;
+    transition: all 1s;
+  }
+
+  A.icon-link:hover {
+    transform: scale(1.4);
+  }
+}
