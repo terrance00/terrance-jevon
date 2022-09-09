@@ -1,3 +1,4 @@
+const CopyPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = (env) => {
@@ -9,6 +10,19 @@ module.exports = (env) => {
     inject: true,
     base: prod ? '/terrance-jevon/' : '/',
     template: 'index.html'
+  });
+
+  const copy = new CopyPlugin({
+    patterns: [
+      {
+        from: './src/assets/adff9f9d19f8523eaa31c4bfd513913f.jpg',
+        to: 'assets/'
+      },
+      {
+        from: 'src/assets/icons/*',
+        to: __dirname + '/docs/assets/icons/[name][ext]'
+      }
+    ]
   });
 
   const devTool = !prod
@@ -39,7 +53,7 @@ module.exports = (env) => {
         }
       ]
     },
-    plugins: [htmlPlugin],
+    plugins: [htmlPlugin, copy],
     ...devTool
   };
 };

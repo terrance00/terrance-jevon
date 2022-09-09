@@ -1,0 +1,41 @@
+@import '../../styles/box-shadow.scss';
+
+.page-header {
+  img {
+    width: 300px;
+    height: auto;
+    border-radius: 100px;
+    transition: box-shadow 1s;
+  }
+  z-index: 1;
+
+  h4 {
+    text-align: center;
+  }
+
+  margin-left:auto;
+  margin-right:auto;
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  background-color: rgba(145, 145, 145, 0.4);
+
+  hr {
+    width: 90%;
+    border-bottom: 1px solid;
+  }
+
+  .description {
+    font-weight: 100;
+  }
+
+  transition: box-shadow 1s;
+}
+
+.page-header:hover {
+  box-shadow: $box-shadow;
+
+  img {
+    box-shadow: $box-shadow;
+  }
+}

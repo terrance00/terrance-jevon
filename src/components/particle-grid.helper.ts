@@ -18,7 +18,7 @@ export function DrawParticleGrid(canvas: HTMLCanvasElement): void {
   let shapes: Shape[] = [];
 
   for (let i: number = 0; i < COUNTER; i++) {
-    let point = new Point(randomIntBetween(-200, boundaryX + 200), randomIntBetween(-200, boundaryY + 200));
+    let point = new Point(randomIntBetween(0, boundaryX), randomIntBetween(0, boundaryY));
     let circle = createCircleAt(point);
     shapes.push(circle);
     stage.addChild(circle);
@@ -38,7 +38,7 @@ export function DrawParticleGrid(canvas: HTMLCanvasElement): void {
   let connections: { from: number; to: number }[] = getConnections(points);
   const indexArr: number[] = getIndexArray(connections.length);
   Ticker.addEventListener('tick', () => {
-    drawCurrentState(stage, shapes, tweenedPoints);
+    drawCurrentState(shapes, tweenedPoints);
     stage.removeChildAt(...indexArr);
     drawConnections(stage, tweenedPoints, connections);
     stage.update();
@@ -58,7 +58,7 @@ function getIndexArray(connectionLength: number): number[] {
   return result;
 }
 
-function drawCurrentState(stage: Stage, shapes: Shape[], tweenedPoints: Point[]): void {
+function drawCurrentState(shapes: Shape[], tweenedPoints: Point[]): void {
   shapes.forEach((s: Shape, i: number) => {
     s.x = tweenedPoints[i].x;
     s.y = tweenedPoints[i].y;
@@ -121,7 +121,6 @@ function attachResizeEvent(canvas: HTMLCanvasElement, parent: HTMLDivElement): v
 }
 
 function resizeToParent(canvas: HTMLCanvasElement, parent: HTMLDivElement): void {
-  console.info('resizing');
   canvas.width = parent.clientWidth;
   canvas.height = parent.clientHeight - 4;
 }
