@@ -1,14 +1,20 @@
-import React from 'react';
-import { ReactElement } from 'react';
-import './page-header.component.scss';
+import React, { MutableRefObject, ReactElement, useRef } from 'react';
+import { FadeIn } from '../../helpers/fade-in.helper';
 import { IconList } from '../icon-list/icon-list.component';
+import './page-header.component.scss';
 
-export function PageHeader(props: { currentWidth: number }): ReactElement {
+export function PageHeader(props: { small: boolean }): ReactElement {
+  const pageRef: MutableRefObject<HTMLDivElement | null> = useRef(null);
+
+  FadeIn(pageRef);
+
   return (
-    <div className="page-header">
+    <div ref={pageRef} style={{ opacity: 0 }} className={!!props.small ? 'page-header-small' : 'page-header'}>
       <img alt="profile-pic" className="profile-pic" src="assets/adff9f9d19f8523eaa31c4bfd513913f.jpg" />
-      <h4><span className="thin">Allan Terrance Jevon</span> | Software Engineer</h4>
-      <hr/>
+      <h4>
+        <span className="thin">Allan Terrance Jevon</span> | Software Engineer
+      </h4>
+      <hr />
       <IconList />
     </div>
   );
