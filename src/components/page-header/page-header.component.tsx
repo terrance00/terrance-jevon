@@ -12,7 +12,7 @@ export function PageHeader(props: { small: boolean }): ReactElement {
     <div ref={pageRef} style={{ opacity: 0 }} className={!!props.small ? 'page-header-small' : 'page-header'}>
       <img alt="profile-pic" className="profile-pic" src="assets/adff9f9d19f8523eaa31c4bfd513913f.jpg" />
       <h4>
-        <span className="thin">Allan Terrance Jevon</span> | Software Engineer
+        <span className="thin">Allan Terrance Jevon</span> <br className='break' /> <span className="pipe">|</span> Software Engineer
       </h4>
       <hr />
       <IconList />

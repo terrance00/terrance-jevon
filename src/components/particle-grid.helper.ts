@@ -15,7 +15,7 @@ export function DrawParticleGrid(canvas: HTMLCanvasElement, counterFull: number 
     const boundaryY: number = canvas.clientHeight;
     const boundaryX: number = canvas.clientWidth;
 
-    let counter: number = boundaryX > 400 ? counterFull : counterMobile;
+    let counter: number = boundaryX > 600 ? counterFull : counterMobile;
 
     let shapes: Shape[] = [];
 

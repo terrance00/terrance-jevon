@@ -8,7 +8,7 @@ import { Javascript } from './pages/javascript/javascript.page';
 import { MutableRefObject } from 'react';
 
 export function App(): ReactElement {
-  const [isMobile, setIsMobile]: [a: boolean, b: (b: boolean) => void] = useState(window.innerWidth <= 600);
+  const [isSmall, setIsMobile]: [a: boolean, b: (b: boolean) => void] = useState(window.innerWidth <= 600);
 
   useEffect(() => {
     let timeout: number | undefined;
@@ -18,8 +18,8 @@ export function App(): ReactElement {
       window.clearTimeout(timeout);
 
       timeout = window.setTimeout(() => {
-        if (window.innerWidth > 600 && isMobile) setIsMobile(false);
-        else if (window.innerWidth <= 600 && !isMobile) setIsMobile(true);
+        if (window.innerWidth > 600 && isSmall) setIsMobile(false);
+        else if (window.innerWidth <= 600 && !isSmall) setIsMobile(true);
       }, 300);
     };
 
@@ -32,7 +32,7 @@ export function App(): ReactElement {
 
   return (
     <div className="page-block">
-      <PageHeader small={isMobile} />
+      <PageHeader small={isSmall} />
       <ParticleGrid countFull={350} countMobile={50} />
       <Routes>
         <Route path="/" element={<Menu />} />

@@ -22,6 +22,10 @@
   padding: 40px;
   background-color: rgba(145, 145, 145, 0.4);
 
+  .break {
+    display: none;
+  }
+
   hr {
     width: 90%;
     border-bottom: 1px solid;
@@ -48,15 +52,30 @@
 
 .page-header-small {
   display: flex;
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
   width: 100%;
   height: 80px;
   flex-direction: row;
   background-color: rgba(145, 145, 145, 0.4);
+  align-items: center;
+  justify-content: center;
   img.profile-pic {
-    height: 60px;
-    width: auto;
-    border-radius: 50px;
+    display: none;
+  }
+
+  .pipe {
+    display: none;
+  }
+
+  .thin {
+    font-weight: 100;
+  }
+
+  h4 {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: large;
   }
 }

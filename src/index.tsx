@@ -8,7 +8,7 @@ const root = createRoot(document.getElementById('app-root') as Element);
 
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename={location.pathname.split('/')[1] ?? ''}>
       <App />
     </BrowserRouter>
   </React.StrictMode>
