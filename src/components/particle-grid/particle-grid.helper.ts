@@ -4,7 +4,12 @@ const LINE_COLOR: string = '#8f8f8f';
 const SHAPE_COLOR: string = '#53565c';
 const DISTANCE_PER_TICK = 1;
 
-export function DrawParticleGrid(canvas: HTMLCanvasElement, counterFull: number = 400, counterMobile: number = 50): void {
+export function DrawParticleGrid(
+  canvas: HTMLCanvasElement,
+  counterFull: number = 400,
+  counterSmall: number = 50,
+  counterMedium: number = 100
+): void {
   const stage: Stage = new Stage(canvas);
   const parent: HTMLDivElement = canvas.parentElement! as HTMLDivElement;
 
@@ -15,7 +20,7 @@ export function DrawParticleGrid(canvas: HTMLCanvasElement, counterFull: number 
     const boundaryY: number = canvas.clientHeight;
     const boundaryX: number = canvas.clientWidth;
 
-    let counter: number = boundaryX > 600 ? counterFull : counterMobile;
+    let counter: number = boundaryX <= 600 ? counterSmall : boundaryX > 600 && boundaryX <= 1200 ? counterMedium : counterFull;
 
     let shapes: Shape[] = [];
 

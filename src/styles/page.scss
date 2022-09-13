@@ -1,0 +1,10 @@
+@import './box-shadow.scss';
+
+.page {
+  display: flex;
+  flex-direction: column;
+  box-shadow: $box-shadow;
+  background-color: rgba(255, 255, 255, 0.7);
+  margin: 20px 0 20px 0;
+  padding: 50px;
+}

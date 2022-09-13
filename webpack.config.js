@@ -21,6 +21,10 @@ module.exports = (env) => {
       {
         from: 'node_modules/@fortawesome/fontawesome-free/js/all.min.js',
         to: __dirname + '/docs/js/[name][ext]'
+      },
+      {
+        from: 'src/assets/logos/',
+        to: __dirname + '/docs/assets/logos/[name][ext]'
       }
     ]
   });

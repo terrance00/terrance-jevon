@@ -1,0 +1,21 @@
+@import '../../styles/box-shadow.scss';
+@import '../../styles/page.scss';
+
+.about {
+  p {
+    text-align: center;
+    font-size: small;
+  }
+
+  .img-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    img {
+      width: 120px;
+      height: auto;
+      margin: 20px;
+    }
+  }
+}

@@ -1,43 +1,43 @@
-import React, { ReactElement, useEffect, useRef, useState } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import React, { ReactElement, useState } from 'react';
+import { Location, Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import './app.scss';
+import { BackButton } from './components/back-button/back-button.component';
+import { PageFooter } from './components/page-footer/page-footer.component';
 import { PageHeader } from './components/page-header/page-header.component';
 import { ParticleGrid } from './components/particle-grid/particle-grid.component';
+import { About } from './pages/about/about.page';
+import { Databases } from './pages/databases/databases.page';
+import { Experience } from './pages/experience/experience.page';
+import { Frameworks } from './pages/frameworks/frameworks.page';
+import { Languages } from './pages/languages/languages.page';
 import { Menu } from './pages/menu/menu.page';
-import { Javascript } from './pages/javascript/javascript.page';
-import { MutableRefObject } from 'react';
+import { Microservices } from './pages/microservices/microservices.page';
 
 export function App(): ReactElement {
-  const [isSmall, setIsMobile]: [a: boolean, b: (b: boolean) => void] = useState(window.innerWidth <= 600);
+  let isSmall: boolean = false;
 
-  useEffect(() => {
-    let timeout: number | undefined;
-    let listener: (e: Event) => void = (e: Event) => {
-      let ele: HTMLElement = e.target as HTMLElement;
+  const location: Location = useLocation();
 
-      window.clearTimeout(timeout);
-
-      timeout = window.setTimeout(() => {
-        if (window.innerWidth > 600 && isSmall) setIsMobile(false);
-        else if (window.innerWidth <= 600 && !isSmall) setIsMobile(true);
-      }, 300);
-    };
-
-    window.addEventListener('resize', listener);
-
-    return () => {
-      window.removeEventListener('resize', listener);
-    };
-  });
+  if (!!location.pathname.split('/')[1]) {
+    isSmall = true;
+  }
 
   return (
     <div className="page-block">
+      { !location.pathname.split('/')[1] ? <></> : <BackButton /> }
       <PageHeader small={isSmall} />
-      <ParticleGrid countFull={350} countMobile={50} />
+      <ParticleGrid countFull={350} countSmall={50} countMedium={100} />
       <Routes>
         <Route path="/" element={<Menu />} />
-        <Route path="js" element={<Javascript />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/databases" element={<Databases />} />
+        <Route path="/experience" element={<Experience />} />
+        <Route path="/frameworks" element={<Frameworks />} />
+        <Route path="/microservices" element={<Microservices />} />
+        <Route path="/languages" element={<Languages />} />
+        <Route path="/*" element={<Navigate to="/" />} />
       </Routes>
+      <PageFooter />
     </div>
   );
 }

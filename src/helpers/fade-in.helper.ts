@@ -7,7 +7,7 @@ export function FadeIn(component: MutableRefObject<HTMLElement | null>): void {
       anime({
         targets: [component.current],
         opacity: 1,
-        duration: 2000,
+        duration: 1000,
         easing: 'easeOutQuad'
       });
   });

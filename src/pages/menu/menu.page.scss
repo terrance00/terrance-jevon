@@ -1,0 +1,27 @@
+@import '../../styles/box-shadow.scss';
+@import '../../styles/page.scss';
+
+.menu {
+  a {
+    color: grey;
+    text-decoration: none;
+    border-bottom: 1px solid grey;
+    padding: 20px;
+    margin: 10px 0 10px 0;
+    transition: box-shadow 0.5s, background-color 1s, color 1s;
+    text-align: center;
+  }
+
+  a:hover {
+    cursor: pointer;
+    box-shadow: $box-shadow;
+    background-color: rgba(255, 255, 255);
+  }
+
+  a:hover:active {
+    background-color: rgba(120, 120, 120);
+    color: rgba(255, 255, 255);
+  }
+
+
+}
