@@ -7,7 +7,9 @@ import './index.scss';
 const root = createRoot(document.getElementById('app-root') as Element);
 
 root.render(
-  <HashRouter basename={location.pathname.split('/')[1] ?? ''}>
-    <App />
-  </HashRouter>
+  <React.StrictMode>
+    <HashRouter >
+      <App />
+    </HashRouter>
+  </React.StrictMode>
 );
