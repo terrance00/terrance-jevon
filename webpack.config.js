@@ -25,6 +25,10 @@ module.exports = (env) => {
       {
         from: 'src/assets/logos/',
         to: __dirname + '/docs/assets/logos/[name][ext]'
+      },
+      {
+        from: 'src/assets/favicon/',
+        to: __dirname + '/docs/[name][ext]'
       }
     ]
   });

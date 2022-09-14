@@ -2,7 +2,7 @@ import { Ease, Point, Shape, Stage, Ticker, Tween } from 'createjs-module';
 
 const LINE_COLOR: string = '#8f8f8f';
 const SHAPE_COLOR: string = '#53565c';
-const DISTANCE_PER_TICK = 1;
+const DISTANCE_PER_TICK = 2;
 
 export function DrawParticleGrid(
   canvas: HTMLCanvasElement,
