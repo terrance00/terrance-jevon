@@ -1,59 +1,59 @@
-import { Chart, ChartConfiguration, ChartData, ChartItem } from 'chart.js';
-import React, { MutableRefObject, useEffect, useRef } from 'react';
-import { ReactElement } from 'react';
+import { ChartData, ChartOptions } from 'chart.js';
+import React, { MutableRefObject, ReactElement, useEffect, useRef } from 'react';
+import { Chart } from 'react-chartjs-2';
 import { FadeIn } from '../../helpers/fade-in.helper';
 import './databases.page.scss';
 
 export function Databases(): ReactElement {
   const ref: MutableRefObject<HTMLDivElement | null> = useRef(null);
-  const canvasRef: MutableRefObject<HTMLCanvasElement | null> = useRef(null);
 
   FadeIn(ref);
 
   useEffect(() => {
-    if (!canvasRef.current) return;
-
-    const chartData: ChartData<'polarArea'> = {
-      labels: ['MongoDB', 'Microsoft SQL Server', 'Postgres', 'Couchbase', 'Redis'],
-      datasets: [
-        {
-          label: 'MongoDB',
-          data: [3]
-        },
-        {
-          label: 'Microsoft SQL Server',
-          data: [9]
-        },
-        {
-          label: 'Postgres',
-          data: [6]
-        },
-        {
-          label: 'Couchbase',
-          data: [1]
-        },
-        {
-          label: 'Redis',
-          data: [3]
-        }
-      ]
-    };
-
-    const chartOpts: ChartConfiguration = {
-      type: 'polarArea',
-      data: chartData,
-      options: {
-        responsive: true,
-        resizeDelay: 100,
-        maintainAspectRatio: false
-      }
-    };
-
-    //const chart = new Chart(canvasRef.current, chartOpts);
+    return () => {};
   });
 
+  const opts: ChartOptions<'polarArea'> = {
+    responsive: true,
+    resizeDelay: 100,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        position: 'bottom',
+        display: true
+      },
+      title: {
+        text: 'Years of database experience',
+        display: true,
+        font: {
+          weight: '100',
+          size: 26
+        }
+      }
+    }
+  };
+
+  const chartData: ChartData<'polarArea'> = {
+    labels: ['MongoDB', 'Microsoft SQL Server', 'Postgres', 'Couchbase', 'Redis'],
+    datasets: [
+      {
+        data: [3, 9, 6, 1, 3],
+        backgroundColor: [
+          'rgba(118, 245, 93, 0.5)',
+          'rgba(245, 93, 93, 0.5)',
+          'rgba(78, 95, 245, 0.5)',
+          'rgba(159, 93, 245, 0.5)',
+          'rgba(245, 184, 93, 0.5)'
+        ]
+      }
+    ]
+  };
+
   return (
-    <div ref={ref} style={{ opacity: 0 }} className="databases page">
-    </div>
+    <>
+      <div ref={ref} style={{ opacity: 0 }} className="databases page">
+        <Chart type="polarArea" data={chartData} options={opts} style={{ marginLeft: '30px', marginRight: '30px' }}></Chart>
+      </div>
+    </>
   );
 }

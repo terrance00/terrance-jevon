@@ -14,7 +14,7 @@ export function ParticleGrid(props: { countFull: number; countSmall: number; cou
 
   return (
     <div className="particle-grid">
-      <canvas ref={canvasRef}></canvas>
+      <canvas id='particle-canvas' ref={canvasRef}></canvas>
     </div>
   );
 }
