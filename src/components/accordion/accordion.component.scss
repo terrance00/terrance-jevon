@@ -1,0 +1,27 @@
+.accordion {
+  .accordion-item {
+    .accordion-heading {
+      display:flex;
+      flex-direction: row;
+      align-items: center;
+
+      border-bottom: 1px solid grey;
+      img {
+        height: 60px;
+        width: auto;
+      }
+
+    }
+
+    .accordion-text {
+
+    }
+  }
+
+  .accordion-item.closed {
+    .accordion-text {
+      display: none;
+    }
+  }
+}
+
