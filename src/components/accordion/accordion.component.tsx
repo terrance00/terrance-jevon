@@ -31,11 +31,12 @@ export function Accordion(props: { data: AccordionData[] }): ReactElement {
             <i className="fa-solid fa-caret-down"></i>
             <i className="fa-solid fa-caret-left"></i>
           </p>
-          <div className="accordion-text">
+          <ul className="accordion-text">
             {props.data[i].texts.map((text: string, j: number) => (
-              <p key={j + 200}>{text}</p>
+              <li key={j + 200}>{text}</li>
             ))}
-          </div>
+          </ul>
+          <hr />
         </div>
       ))}
     </div>

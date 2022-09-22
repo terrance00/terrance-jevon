@@ -2,17 +2,28 @@
 
 .accordion {
   box-shadow: $box-shadow;
+
+  p {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
   .accordion-item {
+    transition: background-color 1s;
+
+    hr {
+      margin: 0 15px 0 15px;
+    }
+
     .accordion-heading {
       display: flex;
       flex-direction: row;
       align-items: center;
       word-wrap: break-word;
 
-      border-bottom: 1px solid grey;
       img {
         height: 60px;
         width: auto;
+        margin: 0 15px 0 15px;
       }
 
       strong {
@@ -21,20 +32,33 @@
 
       small {
         font-weight: 100;
+        text-transform: uppercase;
       }
 
       svg {
-        margin: 0 15px 0 15px;
+        margin: 0 15px 0 auto;
+
       }
     }
 
     .accordion-text {
+      font-size: 14px;
+      transition: max-height 0.4s;
     }
+  }
+
+  .accordion-item:hover {
+    background-color: rgb(209, 224, 224);
+    cursor: pointer;
   }
 
   .accordion-item.closed {
     .accordion-text {
-      display: none;
+      max-height: 0px;
+      overflow-y: hidden;
+      li {
+        line-height: 0;
+      }
     }
 
     .fa-caret-down {
@@ -44,7 +68,8 @@
 
   .accordion-item.open {
     .accordion-text {
-      display: block;
+      max-height: 200px;
+      overflow-y: auto;
     }
 
     .fa-caret-left {
