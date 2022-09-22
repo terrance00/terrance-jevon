@@ -2,24 +2,38 @@ import React, { SyntheticEvent, useState } from 'react';
 import { ReactElement } from 'react';
 import { AccordionData } from './accordion-data.interface';
 import './accordion.component.scss';
+import classnames from 'classnames';
 
 export function Accordion(props: { data: AccordionData[] }): ReactElement {
   const [openIndices, setOpenIndices]: [a: number[], b: (c: number[]) => void] = useState<number[]>([]);
 
-  const onAccordionClick: (e: number) => void = (indexToToggle: number) => {};
+  const onAccordionClick: (e: number) => void = (indexToToggle: number) => {
+    const index: number = openIndices.findIndex((i) => i === indexToToggle);
+    if (index > -1) openIndices.splice(index);
+    else openIndices.push(indexToToggle);
+    setOpenIndices([...openIndices]);
+  };
+
+  const openIndiciesMap: boolean[] = Array(props.data.length).fill(false);
+
+  openIndices.forEach((index: number) => {
+    openIndiciesMap[index] = true;
+  });
 
   return (
     <div className="accordion">
-      {props.data.map((acc: AccordionData, i: number) => (
-        <div key={i} className={`accordion-item ${openIndices.findIndex(oi => oi === i) > -1 ? 'open' : 'closed'}`}>
+      {openIndiciesMap.map((open: boolean, i: number) => (
+        <div key={i} className={!!open ? 'accordion-item open' : 'accordion-item closed'}>
           <p onClick={() => onAccordionClick(i)} className="accordion-heading">
-            <img src={acc.imgSrc} alt={acc.imgAlt} />
-            <strong>{acc.heading}</strong>
-            <small>{acc.subHeading}</small>
+            <img src={props.data[i].imgSrc} alt={props.data[i].imgAlt} />
+            <strong>{props.data[i].heading}</strong>
+            <small>{props.data[i].subHeading}</small>
+            <i className="fa-solid fa-caret-down"></i>
+            <i className="fa-solid fa-caret-left"></i>
           </p>
           <div className="accordion-text">
-            {acc.texts.map((text: string, j: number) => (
-              <p key={j}>{text}</p>
+            {props.data[i].texts.map((text: string, j: number) => (
+              <p key={j + 200}>{text}</p>
             ))}
           </div>
         </div>

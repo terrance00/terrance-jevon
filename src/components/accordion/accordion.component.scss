@@ -1,9 +1,13 @@
+@import '../../styles/box-shadow.scss';
+
 .accordion {
+  box-shadow: $box-shadow;
   .accordion-item {
     .accordion-heading {
-      display:flex;
+      display: flex;
       flex-direction: row;
       align-items: center;
+      word-wrap: break-word;
 
       border-bottom: 1px solid grey;
       img {
@@ -11,10 +15,20 @@
         width: auto;
       }
 
+      strong {
+        margin: 0 15px 0 15px;
+      }
+
+      small {
+        font-weight: 100;
+      }
+
+      svg {
+        margin: 0 15px 0 15px;
+      }
     }
 
     .accordion-text {
-
     }
   }
 
@@ -22,6 +36,19 @@
     .accordion-text {
       display: none;
     }
+
+    .fa-caret-down {
+      display: none;
+    }
+  }
+
+  .accordion-item.open {
+    .accordion-text {
+      display: block;
+    }
+
+    .fa-caret-left {
+      display: none;
+    }
   }
 }
-
