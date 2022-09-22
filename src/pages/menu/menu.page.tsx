@@ -10,7 +10,7 @@ export function Menu(): ReactElement {
     { link: 'Languages', to: 'languages' },
     { link: 'Frameworks', to: 'frameworks' },
     { link: 'Databases', to: 'databases' },
-    { link: 'Microservices', to: 'microservices' },
+    //{ link: 'Microservices', to: 'microservices' },
     { link: 'Experience', to: 'experience' }
   ];
 
