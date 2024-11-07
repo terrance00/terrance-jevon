@@ -1,8 +1,6 @@
-import React, { SyntheticEvent, useState } from 'react';
-import { ReactElement } from 'react';
+import React, { ReactElement, useState } from 'react';
 import { AccordionData } from './accordion-data.interface';
 import './accordion.component.scss';
-import classnames from 'classnames';
 
 export function Accordion(props: { data: AccordionData[] }): ReactElement {
   const [openIndices, setOpenIndices]: [a: number[], b: (c: number[]) => void] = useState<number[]>([]);

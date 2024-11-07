@@ -11,7 +11,7 @@ export function Experience(): ReactElement {
 
   return (
     <div ref={ref} style={{ opacity: 0 }} title="Engineering Experience" className="experience page">
-      <Chrono mode="HORIZONTAL" cardLess={false} scrollable={true} disableAutoScrollOnClick={false} items={[
+      <Chrono mode="VERTICAL"  cardLess={false} scrollable={true} disableAutoScrollOnClick={false} items={[
         {
           title: 'DYSIS',
           cardTitle: '2013 - 2017',
@@ -36,6 +36,12 @@ export function Experience(): ReactElement {
           cardTitle: '2022 - PRESENT',
           cardSubtitle: 'Technical Lead',
           cardDetailedText: 'Technical lead of the finance team. Handling large transaction volumes for the HollywoodBets gaming company. .Net Core and .Net Framework environments. Angular and React front ends.'
+        },
+        {
+          title: 'BSC Global',
+          cardTitle: '2023 - PRESENT',
+          cardSubtitle: 'Senior Software Engineer',
+          cardDetailedText: 'Senior software engineer in the BSC Global team. Working on a large scale performance tracking software aimed at the production sector. .Net microservices infrastructure with React client facing.'
         }
       ]}></Chrono>
     </div>
