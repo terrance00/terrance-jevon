@@ -1,11 +1,8 @@
+import React, { ReactElement } from 'react';
 import './icon-list.component.scss';
-import { MutableRefObject, ReactElement, useEffect, useRef } from 'react';
-import React from 'react';
-import { FadeIn } from '../../helpers/fade-in.helper';
 
 export function IconList(): ReactElement {
   const icons: [alt: string, className: string, link: string][] = [
-    ['Linked In', 'fa-brands fa-linkedin', 'https://www.linkedin.com/in/terrance-jevon-3379b489/'],
     ['StackOverflow', 'fa-brands fa-stack-overflow', 'https://stackoverflow.com/users/4448428/terrance00'],
     ['GitHub', 'fa-brands fa-github', 'https://github.com/terrance00']
   ];
